@@ -4,7 +4,7 @@ import Link from "next/link";
 import React from "react";
 
 function Navbar() {
-  const location = window.location.pathname;
+  const location = "";
 
   return (
     <div className=" hidden md:flex justify-end ">
