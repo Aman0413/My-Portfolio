@@ -10,8 +10,8 @@ import { SlCalender } from "react-icons/sl";
 import { FaGithubSquare, FaLinkedin, FaInstagramSquare } from "react-icons/fa";
 import { useState } from "react";
 import Navbar from "../components/Navbar";
-
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,6 +21,10 @@ const inter = Inter({ subsets: ["latin"] });
 // };
 
 export default function RootLayout({ children }) {
+  const variants = {
+    hidden: { opacity: 0, x: -200, y: 0 },
+    enter: { opacity: 1, x: 0, y: 0 },
+  };
   const data = [
     {
       id: 1,
@@ -56,7 +60,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <main className="bg-[#121212] w-full h-screen flex items-center flex-col p-3">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.5 }}
+          className="bg-[#121212] w-full h-screen flex items-center flex-col p-3"
+        >
           <div className="w-[98%] md:flex ">
             {/* top section start*/}
             <div className=" bg-primary border-[0.2px] border-[#5a5a5b]  text-white  px-3 py-2 md:my-10 my-5 rounded-3xl flex flex-col items-center gap-x-5 md:h-fit md:block relative md:w-[25%] md:justify-center">
@@ -91,10 +101,17 @@ export default function RootLayout({ children }) {
                 <div className="bg-[#383839] w-full h-[1px] mt-10"></div>
 
                 {/* contact details */}
-                <div
+                <motion.nav
+                  initial={{ y: 50 }}
+                  animate={{ y: show ? 0 : 10 }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 300,
+                    damping: 30,
+                  }}
                   className={`${
                     show ? "block" : "hidden"
-                  } md:block  transition-all ease-in-out duration-500`}
+                  } md:block transition-all ease-in-out duration-500`}
                 >
                   <div className="flex flex-col gap-2 mt-5">
                     {data.map((item) => {
@@ -125,7 +142,7 @@ export default function RootLayout({ children }) {
                       <FaInstagramSquare className="rounded-lg" />
                     </div>
                   </div>
-                </div>
+                </motion.nav>
               </div>
 
               {/* Mobile view navbar start */}
@@ -162,7 +179,7 @@ export default function RootLayout({ children }) {
               <div className="px-7 py-2">{children}</div>
             </div>
           </div>
-        </main>
+        </motion.div>
       </body>
     </html>
   );

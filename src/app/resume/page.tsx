@@ -1,5 +1,8 @@
+'use client'
+
 import React from 'react'
 import { IoMdBook } from "react-icons/io";
+import { motion } from "framer-motion";
 
 function resume() {
 
@@ -46,7 +49,13 @@ function resume() {
         },
     ]
     return (
-        <article className="resume  py-6 pb-16 md:pb-5" data-page="resume">
+        <motion.article
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+
+            className="resume  py-6 pb-16 md:pb-5" data-page="resume">
             <div className="flex flex-col space-y-3">
                 <h1 className="text-3xl font-semibold">Resume</h1>
                 <div className="bg-yellow-primary w-10 h-1 rounded-2xl"></div>
@@ -143,7 +152,7 @@ function resume() {
             </section>
             {/* Skill section end */}
 
-        </article >
+        </ motion.article>
 
     )
 }

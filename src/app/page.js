@@ -2,6 +2,7 @@
 
 import React from "react";
 import { SiAffinitydesigner } from "react-icons/si";
+import { motion } from "framer-motion";
 
 function page() {
   const data = [
@@ -31,7 +32,13 @@ function page() {
     },
   ];
   return (
-    <div className="about py-6">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}
+      className="about py-6"
+    >
       <div>
         <div className="flex flex-col space-y-3">
           <h1 className="text-3xl font-semibold">About Me</h1>
@@ -76,7 +83,7 @@ function page() {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

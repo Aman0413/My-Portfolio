@@ -1,7 +1,10 @@
+"use client";
+
 import React from "react";
 import { IoEye } from "react-icons/io5";
 import { FaGithub } from "react-icons/fa";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 function portfolio() {
   const portfolioData = [
@@ -67,7 +70,13 @@ function portfolio() {
     },
   ];
   return (
-    <div className="portfolio py-6">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}
+      className="portfolio py-6"
+    >
       <div className="flex flex-col space-y-3">
         <h1 className="text-3xl font-semibold">Resume</h1>
         <div className="bg-yellow-primary w-10 h-1 rounded-2xl"></div>
@@ -118,7 +127,7 @@ function portfolio() {
         })}
       </div>
       {/* portfolio card end*/}
-    </div>
+    </motion.div>
   );
 }
 

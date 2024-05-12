@@ -1,9 +1,18 @@
+"use client";
+
 import React from "react";
 import { IoIosSend } from "react-icons/io";
+import { motion } from "framer-motion";
 
 function contact() {
   return (
-    <div className="contact py-6 ">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}
+      className="contact py-6 "
+    >
       <div className="flex flex-col space-y-3">
         <h1 className="text-3xl font-semibold">Contact</h1>
         <div className="bg-yellow-primary w-10 h-1 rounded-2xl"></div>
@@ -41,7 +50,7 @@ function contact() {
         </div>
       </div>
       {/* contact form end */}
-    </div>
+    </motion.div>
   );
 }
 
