@@ -9,6 +9,7 @@ import { IoPhonePortraitOutline, IoLocationOutline } from "react-icons/io5";
 import { SlCalender } from "react-icons/sl";
 import { FaGithubSquare, FaLinkedin, FaInstagramSquare } from "react-icons/fa";
 import { useState } from "react";
+import Navbar from "../components/Navbar";
 
 import Link from "next/link";
 
@@ -67,12 +68,12 @@ export default function RootLayout({ children }) {
               </div>
               <div className="flex flex-col justify-center items-center space-x-4  md:p-10 p-5 ">
                 <div className="flex md:flex-col space-x-5 justify-center items-center">
-                  <div className="bg-[#383839] rounded-3xl   flex justify-center items-center md:w-40 ">
+                  <div className="bg-[#383839] rounded-3xl   flex justify-center items-center w-30 h-30 p-6 ">
                     <Image
                       src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=2680&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                       alt="Aman Verma"
-                      width={60}
-                      height={60}
+                      width={80}
+                      height={80}
                       className="rounded-full"
                     />
                   </div>
@@ -89,6 +90,7 @@ export default function RootLayout({ children }) {
                 </div>
                 <div className="bg-[#383839] w-full h-[1px] mt-10"></div>
 
+                {/* contact details */}
                 <div
                   className={`${
                     show ? "block" : "hidden"
@@ -127,7 +129,7 @@ export default function RootLayout({ children }) {
               </div>
 
               {/* Mobile view navbar start */}
-              <div className="fixed w-full bg-[hsla(240, 1%, 20%, 0.75)] bottom-0 left-0 right-0  z-10  p-3  border-[0.2px] border-[#5a5a5b] backdrop-blur-[10px] rounded-tr-2xl rounded-tl-2xl md:hidden">
+              <div className="fixed w-full bg-[#282829] shadow-2xl bottom-0 left-0 right-0  z-10  p-3  border-[0.2px] border-[#5a5a5b] backdrop-blur-[10px] rounded-tr-2xl rounded-tl-2xl md:hidden">
                 <ul className="flex items-center justify-around text-text-secondary text-xs p-2">
                   <Link href="/">
                     <li className="hover:text-text-secondary transition-all ease-in-out duration-200">
@@ -154,34 +156,9 @@ export default function RootLayout({ children }) {
 
               {/* Mobile view navbar end */}
             </div>
-            {/* top section end*/}
+            {/* top section  end*/}
             <div className="bg-primary text-white w-full  mt-10 md:ml-5 border-[0.2px] border-[#5a5a5b] rounded-3xl">
-              <div className=" hidden md:flex justify-end ">
-                <div className="navbar bg-[#383839] px-5 py-3 rounded-bl-2xl rounded-tr-2xl w-[60%]">
-                  <ul className="flex items-center justify-around text-base font-medium p-2">
-                    <Link href="/">
-                      <li className="hover:text-text-secondary transition-all ease-in-out duration-200">
-                        About
-                      </li>
-                    </Link>
-                    <Link href={"/resume"}>
-                      <li className="hover:text-text-secondary transition-all ease-in-out duration-200">
-                        Resume
-                      </li>
-                    </Link>
-                    <Link href={"/portfolio"}>
-                      <li className="hover:text-text-secondary transition-all ease-in-out duration-200">
-                        Portfolio
-                      </li>
-                    </Link>
-                    <Link href={"/contact"}>
-                      <li className="hover:text-text-secondary transition-all ease-in-out duration-200">
-                        Contact
-                      </li>
-                    </Link>
-                  </ul>
-                </div>
-              </div>
+              <Navbar />
               <div className="px-7 py-2">{children}</div>
             </div>
           </div>
