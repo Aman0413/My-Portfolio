@@ -40,20 +40,21 @@ function page() {
 
         <div className="mt-4">
           <p className="text-text-secondary text-left leading-7 font-normal">
-            I'm Creative Director and UI/UX Designer from Sydney, Australia,
-            working in web development and print media. I enjoy turning complex
-            problems into simple, beautiful and intuitive designs. My job is to
-            build your website so that it is functional and user-friendly but at
-            the same time attractive. Moreover, I add personal touch to your
-            product and make sure that is eye-catching and easy to use. My aim
-            is to bring across your message and identity in the most creative
-            way. I created web design for many famous brand companies.
+            I&apos;m Creative Director and UI/UX Designer from Sydney,
+            Australia, working in web development and print media. I enjoy
+            turning complex problems into simple, beautiful and intuitive
+            designs. My job is to build your website so that it is functional
+            and user-friendly but at the same time attractive. Moreover, I add
+            personal touch to your product and make sure that is eye-catching
+            and easy to use. My aim is to bring across your message and identity
+            in the most creative way. I created web design for many famous brand
+            companies.
           </p>
         </div>
 
         <div className="mt-10 ">
           <div className="text-2xl font-normal">
-            <h2>What I'm doing</h2>
+            <h2>What I&apos;m doing</h2>
           </div>
           <div className="flex flex-wrap justify-between gap-2 mt-6">
             {data.map((item) => {
