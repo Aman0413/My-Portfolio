@@ -56,7 +56,7 @@ function page() {
           <div className="text-2xl font-normal">
             <h2>What I&apos;m doing</h2>
           </div>
-          <div className="flex flex-wrap justify-between gap-2 mt-6">
+          <div className="flex flex-wrap justify-between gap-2 mt-6 pb-10">
             {data.map((item) => {
               return (
                 <div
