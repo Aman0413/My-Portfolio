@@ -2,8 +2,55 @@ import React from 'react'
 import { IoMdBook } from "react-icons/io";
 
 function resume() {
+
+    const skills = [
+        {
+            id: 1,
+            name: 'Web Development',
+            percentage: '90%',
+        },
+        {
+            id: 2,
+            name: 'React',
+            percentage: '90%'
+        },
+        {
+            id: 3,
+            name: 'Node.js',
+            percentage: '80%'
+        },
+        {
+            id: 4,
+            name: 'Express.js',
+            percentage: '80%'
+        },
+        {
+            id: 5,
+            name: 'MongoDB',
+            percentage: '80%'
+        },
+        {
+            id: 6,
+            name: 'Next.js',
+            percentage: '80%'
+        },
+        {
+            id: 7,
+            name: 'Tailwind CSS',
+            percentage: '90%'
+        },
+        {
+            id: 8,
+            name: 'Git/Github',
+            percentage: '90%'
+        },
+    ]
     return (
-        <article className="resume" data-page="resume">
+        <article className="resume pb-16 md:pb-5" data-page="resume">
+            <div className="flex flex-col space-y-3">
+                <h1 className="text-3xl font-semibold">Resume</h1>
+                <div className="bg-yellow-primary w-10 h-1 rounded-2xl"></div>
+            </div>
             <div className="relative pl-2 sm:pl-10 py-6 group">
                 <div className="flex flex-col sm:flex-row items-start mb-1 group-last:before:hidden before:absolute before:left-2 sm:before:left-0 before:h-full before:px-px before:bg-slate-300 sm:before:ml-[2rem] before:self-start before:-translate-x-1/2 before:translate-y-3 after:absolute after:left-2 sm:after:left-0 after:w-2 after:h-2 after:bg-yellow-primary after:border-4 after:box-content after:border-[#383839] after:rounded-full sm:after:ml-[2rem] after:-translate-x-1/2 after:translate-y-1.5">
                     <div className="text-lg font-bold pl-4">Master of Computer Application (MCA)</div>
@@ -66,21 +113,36 @@ function resume() {
 
 
 
-            <section className="skill">
-                <h3 className="text-xl font-bold my-10">My skills</h3>
-                <ul className="skills-list grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <li className="skills-item">
-                        <div className="title-wrapper flex items-center justify-between mb-2">
-                            <h5 className="text-lg font-semibold">Web design</h5>
-                            <data className="text-gray-500 font-light" value="80">80%</data>
-                        </div>
-                        <div className="skill-progress-bg bg-gray-600 h-3 rounded-full">
-                            <div className="skill-progress-fill bg-yellow-500 h-full rounded-full"></div>
-                        </div>
-                    </li>
-                    {/* <!-- More li items for skills --> */}
-                </ul>
+            {/* Skill section start */}
+            <section className=" mt-14 ">
+                <div className=' text-2xl font-semibold my-5 '>My Skills</div>
+                <div className='bg-[#222224] shadow-xl rounded-2xl border-[0.2px] border-[#383839] px-2'>
+
+                    {
+                        skills.map((item) => {
+                            return (
+                                <div key={item.id} className="md:w-[50%] pl-6 my-3">
+                                    <div className="flex space-x-6 py-2">
+                                        <span className="text-base text-gray-lite font-semibold dark:text-[#A6A6A6]">{item.name}</span>
+                                        <span className="text-base font-semibold text-gray-lite pr-5 dark:text-[#A6A6A6]">{item.percentage}</span>
+                                    </div>
+                                    <div className=''>
+                                        <div className="mt-2 h-2 relative w-full rounded-full overflow-hidden">
+                                            <div className=" w-full h-full bg-[#4b4b4b] absolute "></div>
+                                            <div className={`h-full skill-progress-fill absolute w-[${item.percentage}]`}></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            )
+                        })
+                    }
+                </div>
+
+
             </section>
+            {/* Skill section end */}
+
         </article >
 
     )
