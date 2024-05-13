@@ -8,10 +8,11 @@ import { MdMailOutline } from "react-icons/md";
 import { IoPhonePortraitOutline, IoLocationOutline } from "react-icons/io5";
 import { SlCalender } from "react-icons/sl";
 import { FaGithubSquare, FaLinkedin, FaInstagramSquare } from "react-icons/fa";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import VanillaTilt from "vanilla-tilt";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,10 +22,14 @@ const inter = Inter({ subsets: ["latin"] });
 // };
 
 export default function RootLayout({ children }) {
-  const variants = {
-    hidden: { opacity: 0, x: -200, y: 0 },
-    enter: { opacity: 1, x: 0, y: 0 },
-  };
+  useEffect(() => {
+    VanillaTilt.init(document.querySelectorAll(".tilt-image"), {
+      max: 35,
+      speed: 300,
+      glare: false,
+    });
+  }, []);
+
   const data = [
     {
       id: 1,
@@ -78,7 +83,7 @@ export default function RootLayout({ children }) {
               </div>
               <div className="flex flex-col justify-center items-center space-x-4  md:p-10 p-5 ">
                 <div className="flex md:flex-col space-x-5 justify-center items-center">
-                  <div className="bg-[#383839] rounded-3xl   flex justify-center items-center w-30 h-30 p-6 ">
+                  <div className="bg-[#383839] rounded-3xl   flex justify-center items-center w-30 h-30 p-6 tilt-image">
                     <Image
                       src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=2680&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                       alt="Aman Verma"
@@ -137,9 +142,15 @@ export default function RootLayout({ children }) {
 
                   <div className=" w-full mt-10 transition-all ease-in-out duration-500">
                     <div className="text-text-secondary flex justify-center items-center space-x-4 text-2xl ">
-                      <FaGithubSquare className="rounded-lg" />
-                      <FaLinkedin className="rounded-lg" />
-                      <FaInstagramSquare className="rounded-lg" />
+                      <a href="https://github.com/Aman0413">
+                        <FaGithubSquare className="rounded-lg" />
+                      </a>
+                      <a href="https://www.linkedin.com/in/aman-verma-1a459020b/">
+                        <FaLinkedin className="rounded-lg" />
+                      </a>
+                      <a href="#">
+                        <FaInstagramSquare className="rounded-lg" />
+                      </a>
                     </div>
                   </div>
                 </motion.nav>

@@ -1,10 +1,19 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { SiAffinitydesigner } from "react-icons/si";
 import { motion } from "framer-motion";
+import VanillaTilt from "vanilla-tilt";
 
 function page() {
+  useEffect(() => {
+    VanillaTilt.init(document.querySelectorAll(".tilt-image"), {
+      max: 35,
+      speed: 300,
+      glare: false,
+    });
+  }, []);
+
   const data = [
     {
       id: 1,
@@ -66,7 +75,7 @@ function page() {
               return (
                 <div
                   key={item.id}
-                  className="bg-[#212123] border-[0.2px] border-[#383839] p-8  mt-4 flex flex-col md:flex-row  space-y-4 md:space-y-0 items-center justify-center space-x-6 md:w-[48%] rounded-2xl shadow-2xl"
+                  className="bg-[#212123] border-[0.2px] border-[#383839] p-8  mt-4 flex flex-col md:flex-row  space-y-4 md:space-y-0 items-center justify-center space-x-6 md:w-[48%] rounded-2xl shadow-2xl tilt-image"
                 >
                   <div className="text-3xl text-yellow-primary">
                     {item.icon}
