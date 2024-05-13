@@ -72,16 +72,16 @@ export default function RootLayout({ children }) {
           transition={{ duration: 0.5 }}
           className="bg-[#121212] w-full h-screen flex items-center flex-col p-3"
         >
-          <div className="w-[98%] md:flex ">
+          <div className="w-[98%] md:flex  ">
             {/* top section start*/}
-            <div className=" bg-primary border-[0.2px] border-[#5a5a5b]  text-white  px-3 py-2 md:my-10 my-5 rounded-3xl flex flex-col items-center gap-x-5 md:h-fit md:block relative md:w-[25%] md:justify-center">
+            <div className=" bg-primary border-[0.2px] border-[#5a5a5b]  text-white  px-3 py-2 md:my-10 my-5 rounded-3xl flex flex-col items-center gap-x-5 md:h-fit md:block relative md:w-[25%] md:justify-center ">
               <div
                 className=" absolute top-0 right-0 rounded-lg bg-primary text-yellow-primary text-xl border border-[#5a5a5b] p-1 md:hidden"
                 onClick={handleShow}
               >
                 <MdKeyboardArrowDown />
               </div>
-              <div className="flex flex-col justify-center items-center space-x-4  md:p-10 p-5 ">
+              <div className="flex flex-col justify-center items-center space-x-4  md:p-10 p-5 profile ">
                 <div className="flex md:flex-col space-x-5 justify-center items-center">
                   <div className="bg-[#383839] rounded-3xl   flex justify-center items-center w-30 h-30 p-6 tilt-image">
                     <Image
@@ -185,9 +185,9 @@ export default function RootLayout({ children }) {
               {/* Mobile view navbar end */}
             </div>
             {/* top section  end*/}
-            <div className="bg-primary text-white w-full  mt-10 md:ml-5 border-[0.2px] border-[#5a5a5b] rounded-3xl">
+            <div className="bg-primary text-white w-full mt-10 md:ml-5 border-[0.2px] border-[#5a5a5b] rounded-3xl">
               <Navbar />
-              <div className="px-7 py-2">{children}</div>
+              <div className="px-7 py-2 ">{children}</div>
             </div>
           </div>
         </motion.div>

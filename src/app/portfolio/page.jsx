@@ -6,67 +6,69 @@ import { FaGithub } from "react-icons/fa";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
+import Image from "next/image";
+
 function portfolio() {
   const portfolioData = [
     {
       id: 1,
       title: "SocialFlock",
       category: "Web Development",
-      desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis dolore adipisci placeat",
+      desc: "SocialFlock is a dynamic social media platform designed to connect users worldwide. Built on the MERN (MongoDB, Express.js, React.js, Node.js) stack",
       image:
-        "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-      live: "https://www.google.com",
-      github: "https://www.google.com",
+        "https://res.cloudinary.com/dd3yp2kob/image/upload/v1715571570/portfolio_project_image/scialflock_mbe0iu.png",
+      live: "https://socialflock.onrender.com/",
+      github: "https://github.com/Aman0413/Social-Flock",
     },
     {
       id: 2,
-      title: "SocialFlock",
+      title: "Google Search Engine",
       category: "Web Development",
-      desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis dolore adipisci placeat",
+      desc: "A clone of the Google search engine, providing users with a familiar search experienc",
       image:
-        "https://plus.unsplash.com/premium_photo-1692241091702-bc574bf6b720?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      live: "https://www.google.com",
-      github: "https://www.google.com",
+        "https://res.cloudinary.com/dd3yp2kob/image/upload/v1715571569/portfolio_project_image/google_duyhrn.png",
+      live: "https://google-clone-two-silk.vercel.app/",
+      github: "https://github.com/Aman0413/Google-Clone",
     },
     {
       id: 3,
-      title: "SocialFlock",
+      title: "Code editor",
       category: "Web Development",
-      desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis dolore adipisci placeat",
+      desc: "A code editor that allows users to write, compile, and run code in multiple languages. Built using React.js, express.js and the Ace code editor library.",
       image:
-        "https://plus.unsplash.com/premium_photo-1690303193898-f9c721d0770b?q=80&w=2666&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      live: "https://www.google.com",
-      github: "https://www.google.com",
+        "https://res.cloudinary.com/dd3yp2kob/image/upload/v1715571569/portfolio_project_image/editor_mkw1eh.png",
+      live: "https://writecodeide.netlify.app/",
+      github: "https://github.com/Aman0413/IDE-Project",
     },
     {
       id: 4,
-      title: "SocialFlock",
+      title: "AI Image Generator",
       category: "Web Development",
-      desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis dolore adipisci placeat",
+      desc: "An AI-powered image generator that uses the GAN (Generative Adversarial Network) algorithm to generate images based on user input.",
       image:
-        "https://images.unsplash.com/photo-1522542550221-31fd19575a2d?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      live: "https://www.google.com",
-      github: "https://www.google.com",
+        "https://res.cloudinary.com/dd3yp2kob/image/upload/v1715571569/portfolio_project_image/imageGen_aifr9z.png",
+      live: "https://ai-image-generator-client.onrender.com/",
+      github: "https://github.com/Aman0413/Ai-image-generator-client",
     },
     {
       id: 5,
-      title: "SocialFlock",
+      title: "Movie App",
       category: "Web Development",
-      desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis dolore adipisci placeat",
+      desc: "A movie web app that allows users to search for movies, view movie details, and watch trailers. Built using React.js and the IMDb API",
       image:
-        "https://images.unsplash.com/photo-1583508915901-b5f84c1dcde1?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      live: "https://www.google.com",
-      github: "https://www.google.com",
+        "https://res.cloudinary.com/dd3yp2kob/image/upload/v1715571573/portfolio_project_image/movie_yjhpxp.png",
+      live: "https://movie-app-b7km.onrender.com/",
+      github: "https://github.com/Aman0413/Movie-Web-App",
     },
     {
       id: 6,
-      title: "SocialFlock",
+      title: "ChatGpt Clone",
       category: "Web Development",
-      desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis dolore adipisci placeat",
+      desc: "A clone of the ChatGPT chatbot, which uses the GPT-3f model to generate human-like responses to user input. Built using React.js and the OpenAI GPT-3 API.",
       image:
-        "https://plus.unsplash.com/premium_photo-1683141123518-ae57c1b4d335?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      live: "https://www.google.com",
-      github: "https://www.google.com",
+        "https://res.cloudinary.com/dd3yp2kob/image/upload/v1715571570/portfolio_project_image/chagpt_ueo94q.png",
+      live: "https://www.youtube.com/watch?v=umh1Ac5oXC4",
+      github: "https://github.com/Aman0413/Ask-me-anything",
     },
   ];
   return (
@@ -89,10 +91,12 @@ function portfolio() {
               <div className="w-full flex justify-between">
                 <div className="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30 rounded-2xl">
                   <div class="md:w-60 md:h-60 ">
-                    <img
+                    <Image
                       className="h-full w-full object-cover transition-transform duration-500 group-hover:rotate-3 group-hover:scale-125"
                       src={item.image}
                       alt=""
+                      height={240}
+                      width={240}
                     />
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black group-hover:from-black/70 group-hover:via-black/60 group-hover:to-black/70"></div>

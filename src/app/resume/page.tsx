@@ -10,7 +10,7 @@ function resume() {
         {
             id: 1,
             name: 'Web Development',
-            percentage: '90%',
+            percentage: "90%",
         },
         {
             id: 2,
@@ -55,12 +55,12 @@ function resume() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
 
-            className="resume  py-6 pb-16 md:pb-5" data-page="resume">
+            className="resume  py-6 pb-16 md:pb-5 " data-page="resume">
             <div className="flex flex-col space-y-3">
                 <h1 className="text-3xl font-semibold">Resume</h1>
                 <div className="bg-yellow-primary w-10 h-1 rounded-2xl"></div>
             </div>
-            <div className="relative pl-2 sm:pl-10 py-6 group">
+            <div className="relative pl-2 sm:pl-10 py-6 group ">
                 <div className="flex flex-col sm:flex-row items-start mb-1 group-last:before:hidden before:absolute before:left-2 sm:before:left-0 before:h-full before:px-px before:bg-slate-300 sm:before:ml-[2rem] before:self-start before:-translate-x-1/2 before:translate-y-3 after:absolute after:left-2 sm:after:left-0 after:w-2 after:h-2 after:bg-yellow-primary after:border-4 after:box-content after:border-[#383839] after:rounded-full sm:after:ml-[2rem] after:-translate-x-1/2 after:translate-y-1.5">
                     <div className="text-lg font-bold pl-4">Master of Computer Application (MCA)</div>
                 </div>
@@ -131,14 +131,16 @@ function resume() {
                         skills.map((item) => {
                             return (
                                 <div key={item.id} className="md:w-[50%] pl-6 my-3">
-                                    <div className="flex space-x-6 py-2">
+                                    <div className="flex space-x-6 py-2 justify-between">
                                         <span className="text-base text-gray-lite font-semibold dark:text-[#A6A6A6]">{item.name}</span>
                                         <span className="text-base font-semibold text-gray-lite pr-5 dark:text-[#A6A6A6]">{item.percentage}</span>
                                     </div>
                                     <div className=''>
                                         <div className="mt-2 h-2 relative w-full rounded-full overflow-hidden">
                                             <div className=" w-full h-full bg-[#4b4b4b] absolute "></div>
-                                            <div className={`h-full skill-progress-fill absolute w-[${item.percentage}]`}></div>
+                                            <div className={`h-full skill-progress-fill absolute w-[${item.percentage}]`} style={{
+                                                width: item.percentage
+                                            }}></div>
                                         </div>
                                     </div>
                                 </div>
