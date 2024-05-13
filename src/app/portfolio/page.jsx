@@ -90,7 +90,7 @@ function portfolio() {
             <div key={item.id} className="portfolioCard ">
               <div className="w-full flex justify-between">
                 <div className="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30 rounded-2xl">
-                  <div class="md:w-60 md:h-60 ">
+                  <div class="w-full h-56 md:w-72 md:h-72 ">
                     <Image
                       className="h-full w-full object-cover transition-transform duration-500 group-hover:rotate-3 group-hover:scale-125"
                       src={item.image}
@@ -109,12 +109,12 @@ function portfolio() {
                     </p>
                     <div className="flex space-x-2">
                       <Link href={item.live}>
-                        <button className="rounded-full bg-[#282828] py-3 px-4 font-com text-lg capitalize  shadow shadow-black/60 text-yellow-primary">
+                        <button className="rounded-full bg-[#282828]  p-2 md:py-3 md:px-4 font-com text-lg capitalize  shadow shadow-black/60 text-yellow-primary">
                           <IoEye />
                         </button>
                       </Link>
                       <Link href={item.github}>
-                        <button className="rounded-full bg-[#282828] py-3 px-4 font-com text-lg capitalize  shadow shadow-black/60 text-yellow-primary">
+                        <button className="rounded-full bg-[#282828] p-2 md:py-3 md:px-4 font-com text-lg capitalize  shadow shadow-black/60 text-yellow-primary">
                           <FaGithub />
                         </button>
                       </Link>
