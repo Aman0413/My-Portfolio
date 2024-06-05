@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React from "react";
 import { SiAffinitydesigner } from "react-icons/si";
 import { motion } from "framer-motion";
 import ShowcaseModal from "../components/ShowcaseModal";

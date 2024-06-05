@@ -3,8 +3,22 @@
 import React from "react";
 import { IoIosSend } from "react-icons/io";
 import { motion } from "framer-motion";
+import axios from "axios";
 
 function contact() {
+  async function takeData() {
+    try {
+      const headers = {
+        "Content-Type": "application/json",
+      };
+
+      const res = await axios.get("/api/admin/projects", { headers });
+      console.log(res.data);
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -41,7 +55,10 @@ function contact() {
           />
         </div>
         <div className=" flex justify-end">
-          <button className="bg-[#1e1e1f]  w-full md:w-40 h-12 rounded-2xl font-semibold flex justify-center items-center space-x-2 px-2 py- text-sm border-[0.2px] border-[#5a5a5b] shadow-lg text-yellow-primary transition-all ease-in-out duration-300 active:scale-95">
+          <button
+            className="bg-[#1e1e1f]  w-full md:w-40 h-12 rounded-2xl font-semibold flex justify-center items-center space-x-2 px-2 py- text-sm border-[0.2px] border-[#5a5a5b] shadow-lg text-yellow-primary transition-all ease-in-out duration-300 active:scale-95"
+            onClick={takeData}
+          >
             <span>
               <IoIosSend className="text-xl" />
             </span>
