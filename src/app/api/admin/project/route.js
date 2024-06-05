@@ -9,16 +9,30 @@ cloudinary.v2.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
+// api route to create a new project /admin/project
 export async function POST(request) {
   try {
     await connectDB();
 
+    // Get data from request
     const { title, category, desc, image, live, github } = await request.json();
 
+    // Check if all fields are filled
+    if (!title || !desc || !image || !live || !github) {
+      return NextResponse.json(
+        { message: "Please fill all fields" },
+        {
+          status: 400,
+        }
+      );
+    }
+
+    // Upload image to cloudinary
     const result = await cloudinary.uploader.upload(image, {
       folder: process.env.CLOUDINARY_FOLDER,
     });
 
+    // Check if image was uploaded successfully
     if (!result) {
       return NextResponse.json(
         { message: "Error uploading image" },
@@ -28,6 +42,7 @@ export async function POST(request) {
       );
     }
 
+    // Create new project
     const newProject = new Project({
       title,
       category,
@@ -40,6 +55,7 @@ export async function POST(request) {
       github,
     });
 
+    // Save project to database
     await newProject.save();
 
     return NextResponse.json(
@@ -54,6 +70,75 @@ export async function POST(request) {
   } catch (error) {
     return NextResponse.json(
       { message: "Error", error: error.message },
+      {
+        status: 500,
+      }
+    );
+  }
+}
+
+// api route to get all projects /admin/project
+export async function GET(request) {
+  try {
+    await connectDB();
+
+    // Get all projects
+    const projects = await Project.find();
+
+    return NextResponse.json(
+      {
+        message: "Projects retrieved successfully",
+        data: projects,
+      },
+      {
+        status: 200,
+      }
+    );
+  } catch (error) {
+    return NextResponse.json(
+      { message: "Error in getting projects", error: error.message },
+      {
+        status: 500,
+      }
+    );
+  }
+}
+
+// api route to delete a project /admin/project
+export async function DELETE(request) {
+  try {
+    await connectDB();
+
+    // Get project id from request
+    const { id } = await request.json();
+
+    // Check if project exists
+    const project = await Project.findById(id);
+
+    if (!project) {
+      return NextResponse.json(
+        { message: "Project not found" },
+        {
+          status: 404,
+        }
+      );
+    }
+
+    // Delete project from cloudinary
+    await cloudinary.uploader.destroy(project.image.public_id);
+
+    // Delete project from database
+    await Project.findByIdAndDelete(id);
+
+    return NextResponse.json(
+      { message: "Project deleted successfully" },
+      {
+        status: 200,
+      }
+    );
+  } catch (error) {
+    return NextResponse.json(
+      { message: "Error in deleting project", error: error.message },
       {
         status: 500,
       }
