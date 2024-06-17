@@ -96,8 +96,8 @@ export default function RootLayout({ children }) {
                       <h1 className="md:text-2xl font-medium text-base">
                         Aman Verma
                       </h1>
-                      <div className="text-xs w-28 bg-[#383839] px-2 py-1 text-center rounded-lg">
-                        Web developer
+                      <div className="text-xs w-40 bg-[#383839] px-2 py-2 text-center rounded-lg ">
+                        Software Development Engineer
                       </div>
                     </div>
                   </div>

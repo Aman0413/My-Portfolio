@@ -9,7 +9,7 @@ cloudinary.v2.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-// api route to create a new project /admin/project
+// api route to add a new project /admin/project
 export async function POST(request) {
   try {
     await connectDB();
