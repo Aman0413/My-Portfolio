@@ -12,6 +12,9 @@ import Navbar from "../components/Navbar";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import VanillaTilt from "vanilla-tilt";
+import { Toaster } from "react-hot-toast";
+
+import "react-toastify/dist/ReactToastify.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -71,6 +74,7 @@ export default function RootLayout({ children }) {
           transition={{ duration: 0.5 }}
           className="bg-[#121212] w-full h-screen flex items-center flex-col p-3"
         >
+          <Toaster position="top-center" reverseOrder={false} />
           <div className="w-[98%] md:flex  ">
             {/* top section start*/}
             <div className=" bg-primary border-[0.2px] border-[#5a5a5b]  text-white  px-3 py-2 md:my-10 my-5 rounded-3xl flex flex-col items-center gap-x-5 md:h-fit md:block relative md:w-[25%] md:justify-center ">

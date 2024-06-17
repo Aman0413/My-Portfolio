@@ -1,6 +1,9 @@
 "use client";
 
 import React, { useState } from "react";
+import toast from "react-hot-toast";
+import axios from "axios";
+import { m } from "framer-motion";
 
 function page() {
   const [data, setData] = useState({
@@ -11,6 +14,8 @@ function page() {
     github: "",
     live: "",
   });
+
+  const [disebleButton, setDisebleButton] = useState(false);
 
   const handleImage = (e) => {
     const file = e.target.files[0];
@@ -24,18 +29,40 @@ function page() {
     };
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(data);
+    try {
+      setDisebleButton(true);
+      const myPromise = fetch("/api/admin/project", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      toast.promise(myPromise, {
+        loading: "Loading....",
+        success: "Project added successfully",
+        error: "Error in adding project",
+      });
+
+      setDisebleButton(false);
+      e.form.reset();
+    } catch (error) {
+      setDisebleButton(false);
+      console.log(error);
+      toast.error("Error in adding project");
+    }
   };
   return (
     <div className="flex  items-center justify-center rounded-lg">
-      <div className="mx-auto w-full p-10  bg-white rounded-lg">
+      <div className="mx-auto w-full p-10  bg-[#1e1e1f] rounded-lg ">
         <form onSubmit={handleSubmit}>
-          <div className="mb-5">
+          <div className="mb-5 ">
             <label
               for="title"
-              className="mb-3 block text-base font-medium text-[#07074D]"
+              className="mb-3 block text-base font-medium text-white"
             >
               Title
             </label>
@@ -45,13 +72,13 @@ function page() {
               id="name"
               onChange={(e) => setData({ ...data, title: e.target.value })}
               placeholder="Title of the project"
-              className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+              className="bg-[#1e1e1f]  w-full p-4 rounded-2xl outline-none border-[0.2px] border-[#5a5a5b] caret-yellow-primary placeholder-[#7b7b7b] font-semibold focus:border-yellow-primary focus:border-2"
             />
           </div>
           <div className="mb-5">
             <label
               for="category"
-              className="mb-3 block text-base font-medium text-[#07074D]"
+              className="mb-3 block text-base font-medium text-white"
             >
               Category
             </label>
@@ -61,13 +88,13 @@ function page() {
               id="phone"
               onChange={(e) => setData({ ...data, category: e.target.value })}
               placeholder="Category"
-              className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+              className="bg-[#1e1e1f]  w-full p-4 rounded-2xl outline-none border-[0.2px] border-[#5a5a5b] caret-yellow-primary placeholder-[#7b7b7b] font-semibold focus:border-yellow-primary focus:border-2"
             />
           </div>
           <div className="mb-5">
             <label
               for="Description"
-              className="mb-3 block text-base font-medium text-[#07074D]"
+              className="mb-3 block text-base font-medium text-white"
             >
               Description
             </label>
@@ -77,7 +104,7 @@ function page() {
               id="Description"
               onChange={(e) => setData({ ...data, desc: e.target.value })}
               placeholder="Description"
-              className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+              className="bg-[#1e1e1f]  w-full p-4 rounded-2xl outline-none border-[0.2px] border-[#5a5a5b] caret-yellow-primary placeholder-[#7b7b7b] font-semibold focus:border-yellow-primary focus:border-2"
             />
           </div>
           <div className="-mx-3 flex flex-wrap">
@@ -85,7 +112,7 @@ function page() {
               <div className="mb-5">
                 <label
                   for="live"
-                  className="mb-3 block text-base font-medium text-[#07074D]"
+                  className="mb-3 block text-base font-medium text-white"
                 >
                   Live/Deploy Link
                 </label>
@@ -95,7 +122,7 @@ function page() {
                   id="live"
                   onChange={(e) => setData({ ...data, live: e.target.value })}
                   placeholder="Live"
-                  className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                  className="bg-[#1e1e1f]  w-full p-4 rounded-2xl outline-none border-[0.2px] border-[#5a5a5b] caret-yellow-primary placeholder-[#7b7b7b] font-semibold focus:border-yellow-primary focus:border-2"
                 />
               </div>
             </div>
@@ -103,7 +130,7 @@ function page() {
               <div className="mb-5">
                 <label
                   for="github"
-                  className="mb-3 block text-base font-medium text-[#07074D]"
+                  className="mb-3 block text-base font-medium text-white"
                 >
                   Github Link
                 </label>
@@ -113,22 +140,22 @@ function page() {
                   id="github"
                   onChange={(e) => setData({ ...data, github: e.target.value })}
                   placeholder="Github"
-                  className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                  className="bg-[#1e1e1f]  w-full p-4 rounded-2xl outline-none border-[0.2px] border-[#5a5a5b] caret-yellow-primary placeholder-[#7b7b7b] font-semibold focus:border-yellow-primary focus:border-2"
                 />
               </div>
             </div>
           </div>
 
           <div className="mb-5 pt-3">
-            <label className="mb-5 block text-base font-semibold text-[#07074D] sm:text-xl">
+            <label className="mb-5 block text-base font-semibold text-white sm:text-xl">
               Preview Upload
             </label>
             <div className="-mx-3 flex justify-center items-center flex-wrap">
               <div className="w-full px-3 sm:w-1/2">
-                <div class="extraOutline p-4 bg-white w-max bg-whtie m-auto rounded-lg">
-                  <div class="file_upload p-5 relative border-4 border-dotted border-gray-300 rounded-lg">
+                <div class="extraOutline p-4 bg-[1e1e1f] w-max bg-whtie m-auto rounded-lg">
+                  <div class="file_upload p-5 relative border-4 border-dotted border-yellow-primary rounded-lg">
                     <svg
-                      class="text-indigo-500 w-24 mx-auto mb-4"
+                      class="text-white w-24 mx-auto mb-4"
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
                       viewBox="0 0 24 24"
@@ -150,11 +177,11 @@ function page() {
                         onChange={handleImage}
                       />
 
-                      <div class="text bg-indigo-600 text-white border border-gray-300 rounded font-semibold cursor-pointer p-1 px-3 hover:bg-indigo-500">
+                      <div class="text bg-yellow-primary text-[#1e1e1f] border border-gray-300 rounded font-semibold cursor-pointer p-1 px-3 hover:bg-yellow-600">
                         Select
                       </div>
 
-                      <div class="title text-indigo-500 uppercase">
+                      <div class="title text-white uppercase">
                         or drop files here
                       </div>
                     </div>
@@ -165,7 +192,10 @@ function page() {
           </div>
 
           <div>
-            <button className="hover:shadow-form w-full rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none">
+            <button
+              className="hover:shadow-form w-full rounded-md bg-yellow-primary py-3 px-8 text-center text-base font-semibold text-[#1e1e1f] outline-none"
+              disabled={disebleButton}
+            >
               Add Project
             </button>
           </div>
