@@ -1,10 +1,11 @@
 "use client";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 import React from "react";
 
 function Navbar() {
-  const location = "";
+  const path = usePathname();
 
   return (
     <div className=" hidden md:flex justify-end ">
@@ -12,7 +13,7 @@ function Navbar() {
         <ul className="flex items-center justify-around text-base font-medium p-2">
           <Link
             href="/"
-            className={`${location === "/" ? "text-yellow-primary" : ""}`}
+            className={`${path === "/" ? "text-yellow-primary" : ""}`}
           >
             <li className="hover:text-text-secondary transition-all ease-in-out duration-200">
               About
@@ -20,7 +21,7 @@ function Navbar() {
           </Link>
           <Link
             href={"/resume"}
-            className={`${location === "/resume" ? "text-yellow-primary" : ""}`}
+            className={`${path === "/resume" ? "text-yellow-primary" : ""}`}
           >
             <li className="hover:text-text-secondary transition-all ease-in-out duration-200">
               Resume
@@ -28,9 +29,7 @@ function Navbar() {
           </Link>
           <Link
             href={"/portfolio"}
-            className={`${
-              location === "/portfolio" ? "text-yellow-primary" : ""
-            }`}
+            className={`${path === "/portfolio" ? "text-yellow-primary" : ""}`}
           >
             <li className="hover:text-text-secondary transition-all ease-in-out duration-200">
               Portfolio
@@ -38,9 +37,7 @@ function Navbar() {
           </Link>
           <Link
             href={"/contact"}
-            className={`${
-              location === "/contact" ? "text-yellow-primary" : ""
-            }`}
+            className={`${path === "/contact" ? "text-yellow-primary" : ""}`}
           >
             <li className="hover:text-text-secondary transition-all ease-in-out duration-200">
               Contact

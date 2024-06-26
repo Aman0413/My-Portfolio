@@ -4,9 +4,9 @@ import Project from "../../../models/project";
 import cloudinary from "cloudinary";
 
 cloudinary.v2.config({
-  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-  api_key: process.env.CLOUDINARY_API_KEY,
-  api_secret: process.env.CLOUDINARY_API_SECRET,
+  cloud_name: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY,
+  api_secret: process.env.NEXT_PUBLIC_CLOUDINARY_API_SECRET,
 });
 
 // api route to add a new project /admin/project
@@ -29,7 +29,7 @@ export async function POST(request) {
 
     // Upload image to cloudinary
     const result = await cloudinary.uploader.upload(image, {
-      folder: process.env.CLOUDINARY_FOLDER,
+      folder: process.env.NEXT_PUBLIC_CLOUDINARY_FOLDER,
     });
 
     // Check if image was uploaded successfully
@@ -81,7 +81,6 @@ export async function POST(request) {
 export async function GET(request) {
   try {
     await connectDB();
-
     // Get all projects
     const projects = await Project.find();
 
@@ -109,7 +108,6 @@ export async function DELETE(request) {
   try {
     await connectDB();
 
-    // Get project id from request
     const { id } = await request.json();
 
     // Check if project exists
@@ -118,30 +116,26 @@ export async function DELETE(request) {
     if (!project) {
       return NextResponse.json(
         { message: "Project not found" },
-        {
-          status: 404,
-        }
+        { status: 404 }
       );
     }
 
-    // Delete project from cloudinary
-    await cloudinary.uploader.destroy(project.image.public_id);
+    // Delete project from cloudinary if image exists
+    if (project.image && project.image.public_id) {
+      await cloudinary.uploader.destroy(project.image.public_id);
+    }
 
     // Delete project from database
     await Project.findByIdAndDelete(id);
 
     return NextResponse.json(
       { message: "Project deleted successfully" },
-      {
-        status: 200,
-      }
+      { status: 200 }
     );
   } catch (error) {
     return NextResponse.json(
       { message: "Error in deleting project", error: error.message },
-      {
-        status: 500,
-      }
+      { status: 500 }
     );
   }
 }

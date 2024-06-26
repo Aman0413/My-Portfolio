@@ -84,7 +84,7 @@ function portfolio() {
         <div className="bg-yellow-primary w-10 h-1 rounded-2xl"></div>
       </div>
       {/* portfolio card start*/}
-      <div className="w-full portfolioCard my-10 flex flex-wrap gap-8">
+      <div className=" w-full portfolioCard my-10 grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-10">
         {portfolioData.map((item) => {
           return (
             <div key={item.id} className="portfolioCard ">

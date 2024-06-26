@@ -14,7 +14,8 @@ import { motion } from "framer-motion";
 import VanillaTilt from "vanilla-tilt";
 import { Toaster } from "react-hot-toast";
 
-import "react-toastify/dist/ReactToastify.css";
+// import "react-toastify/dist/ReactToastify.css";
+import { usePathname } from "next/navigation";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,6 +25,8 @@ const inter = Inter({ subsets: ["latin"] });
 // };
 
 export default function RootLayout({ children }) {
+  const path = usePathname();
+
   useEffect(() => {
     VanillaTilt.init(document.querySelectorAll(".tilt-image"), {
       max: 35,
@@ -75,6 +78,7 @@ export default function RootLayout({ children }) {
           className="bg-[#121212] w-full h-screen flex items-center flex-col p-3"
         >
           <Toaster position="top-center" reverseOrder={false} />
+
           <div className="w-[98%] md:flex  ">
             {/* top section start*/}
             <div className=" bg-primary border-[0.2px] border-[#5a5a5b]  text-white  px-3 py-2 md:my-10 my-5 rounded-3xl flex flex-col items-center gap-x-5 md:h-fit md:block relative md:w-[25%] md:justify-center ">
@@ -101,7 +105,7 @@ export default function RootLayout({ children }) {
                         Aman Verma
                       </h1>
                       <div className="text-xs w-40 bg-[#383839] px-2 py-2 text-center rounded-lg ">
-                        Software Development Engineer
+                        Software Engineer
                       </div>
                     </div>
                   </div>
@@ -163,22 +167,38 @@ export default function RootLayout({ children }) {
               <div className="fixed w-full bg-[#282829] shadow-2xl bottom-0 left-0 right-0  z-10  p-3  border-[0.2px] border-[#5a5a5b] backdrop-blur-[10px] rounded-tr-2xl rounded-tl-2xl md:hidden">
                 <ul className="flex items-center justify-around text-text-secondary text-xs p-2">
                   <Link href="/">
-                    <li className="hover:text-text-secondary transition-all ease-in-out duration-200">
+                    <li
+                      className={`hover:text-text-secondary transition-all ease-in-out duration-200 ${
+                        path === "/" ? "text-yellow-primary" : ""
+                      }`}
+                    >
                       About
                     </li>
                   </Link>
                   <Link href={"/resume"}>
-                    <li className="hover:text-text-secondary transition-all ease-in-out duration-200">
+                    <li
+                      className={`hover:text-text-secondary transition-all ease-in-out duration-200 ${
+                        path === "/resume" ? "text-yellow-primary" : ""
+                      }`}
+                    >
                       Resume
                     </li>
                   </Link>
                   <Link href={"/portfolio"}>
-                    <li className="hover:text-text-secondary transition-all ease-in-out duration-200">
+                    <li
+                      className={`hover:text-text-secondary transition-all ease-in-out duration-200 ${
+                        path === "/portfolio" ? "text-yellow-primary" : ""
+                      }`}
+                    >
                       Portfolio
                     </li>
                   </Link>
                   <Link href={"/contact"}>
-                    <li className="hover:text-text-secondary transition-all ease-in-out duration-200">
+                    <li
+                      className={`hover:text-text-secondary transition-all ease-in-out duration-200 ${
+                        path === "/contact" ? "text-yellow-primary" : ""
+                      }`}
+                    >
                       Contact
                     </li>
                   </Link>
@@ -187,6 +207,7 @@ export default function RootLayout({ children }) {
 
               {/* Mobile view navbar end */}
             </div>
+
             {/* top section  end*/}
             <div className="bg-primary text-white w-full mt-10 md:ml-5 border-[0.2px] border-[#5a5a5b] rounded-3xl">
               <Navbar />

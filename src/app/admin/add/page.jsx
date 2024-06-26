@@ -1,11 +1,8 @@
 "use client";
-
 import React, { useState } from "react";
 import toast from "react-hot-toast";
-import axios from "axios";
-import { m } from "framer-motion";
 
-function page() {
+function Page() {
   const [data, setData] = useState({
     title: "",
     category: "",
@@ -48,13 +45,14 @@ function page() {
       });
 
       setDisebleButton(false);
-      e.form.reset();
+      e.target.reset();
     } catch (error) {
       setDisebleButton(false);
       console.log(error);
       toast.error("Error in adding project");
     }
   };
+
   return (
     <div className="flex  items-center justify-center rounded-lg">
       <div className="mx-auto w-full p-10  bg-[#1e1e1f] rounded-lg ">
@@ -205,4 +203,4 @@ function page() {
   );
 }
 
-export default page;
+export default Page;
