@@ -20,18 +20,6 @@ function page() {
       desc: "The most modern and high-quality design made at a professional level",
       icon: <SiAffinitydesigner />,
     },
-    {
-      id: 3,
-      title: "Web Design",
-      desc: "The most modern and high-quality design made at a professional level",
-      icon: <SiAffinitydesigner />,
-    },
-    {
-      id: 4,
-      title: "Web Design",
-      desc: "The most modern and high-quality design made at a professional level",
-      icon: <SiAffinitydesigner />,
-    },
   ];
   return (
     <motion.div
@@ -42,12 +30,12 @@ function page() {
       className="about py-6"
     >
       <div>
-        <div className="flex flex-col space-y-3">
+        <div className="flex flex-col space-y-3 ">
           <h1 className="text-3xl font-semibold">About Me</h1>
           <div className="bg-yellow-primary w-10 h-1 rounded-2xl"></div>
         </div>
 
-        <div className="mt-4">
+        <div className="mt-4 ">
           <p className="text-text-secondary text-left leading-7 font-normal">
             I&apos;m your full-stack MERN virtuoso, with Next.js as my secret
             wand. With MongoDB, Express.js, React, Node.js, and the wizardry of

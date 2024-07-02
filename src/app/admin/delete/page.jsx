@@ -2,14 +2,16 @@
 import React, { useEffect, useState } from "react";
 import { AiFillDelete } from "react-icons/ai";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 function Page() {
   const [projects, setProjects] = useState([]);
+  const [disebleButton, setDisebleButton] = useState(false);
 
   const getAllProjects = async () => {
     try {
       const res = await axios.get("/api/admin/project");
-      console.log(res.data);
+
       setProjects(res.data.data);
     } catch (error) {
       console.log(error);
@@ -18,11 +20,16 @@ function Page() {
 
   const handleDelete = async (id) => {
     try {
+      setDisebleButton(true);
       const res = await axios.delete("/api/admin/project", {
         data: { id },
       });
-      console.log(res.data);
+
+      toast.success(res.data.message);
+      setDisebleButton(false);
     } catch (error) {
+      setDisebleButton(false);
+      toast.error("Error in deleting project");
       console.log(error);
     }
   };
@@ -47,6 +54,7 @@ function Page() {
                 <td
                   className="bg-[#383839] w-20 p-3 rounded-full text-center text-red-600 text-2xl"
                   onClick={() => handleDelete(item._id)}
+                  diseable={disebleButton}
                 >
                   <AiFillDelete />
                 </td>
