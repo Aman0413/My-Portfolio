@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import toast from "react-hot-toast";
 import { sendEmailForQuery } from "../helper/sendEmail";
 
-function contact() {
+function Contact() {
   const [data, setData] = useState({
     name: "",
     email: "",
@@ -94,4 +94,4 @@ function contact() {
   );
 }
 
-export default contact;
+export default Contact;

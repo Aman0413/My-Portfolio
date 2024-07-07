@@ -33,11 +33,10 @@ function Page() {
       console.log(error);
     }
   };
+
   useEffect(() => {
     getAllProjects();
   }, []);
-
-  useEffect(() => {}, [projects]);
 
   return (
     <div className="p-4 mt-5">
