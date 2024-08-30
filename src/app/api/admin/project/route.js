@@ -82,7 +82,7 @@ export async function GET(request) {
   try {
     await connectDB();
     // Get all projects
-    const projects = await Project.find();
+    const projects = await Project.find().sort({ createdAt: 1 });
 
     return NextResponse.json(
       {
