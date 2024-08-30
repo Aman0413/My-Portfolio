@@ -6,15 +6,9 @@ export async function middleware(request) {
 
   const isPublicPath = path === "login";
 
-  const token = request.cookies.token;
-  //   const user = jwt.verify(token, process.env.NEXT_PUBLIC_JWT_SECRET);
-
-  console.log({
-    token,
-  });
+  const token = request.cookies.get("token");
 
   // validate token
-
   if (token && isPublicPath) {
     return NextResponse.redirect(new URL("/", request.url));
   }

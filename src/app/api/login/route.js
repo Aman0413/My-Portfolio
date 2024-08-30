@@ -51,8 +51,13 @@ export async function POST(request) {
     });
 
     // store token in cookie
-    const cookie = `token=${token}; HttpOnly; Path=/; Max-Age=3600; SameSite=Strict`;
-    cookies().set("token", cookie);
+    const cookie = ("token", token);
+
+    cookies().set("token", cookie, {
+      httpOnly: true,
+      secure: true,
+      sameSite: "strict",
+    });
 
     return NextResponse.json(
       {
