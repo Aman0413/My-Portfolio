@@ -82,7 +82,7 @@ export async function GET(request) {
   try {
     await connectDB();
     // Get all projects
-    const projects = await Project.find().sort({ createdAt: 1 });
+    const projects = await Project.find().sort({ createdAt: -1 });
 
     return NextResponse.json(
       {
@@ -109,6 +109,10 @@ export async function DELETE(request) {
     await connectDB();
 
     const { id } = await request.json();
+
+    console.log({
+      id,
+    });
 
     // Check if project exists
     const project = await Project.findById(id);

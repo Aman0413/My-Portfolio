@@ -40,7 +40,7 @@ function Portfolio() {
       className="portfolio py-6"
     >
       <div className="flex flex-col space-y-3">
-        <h1 className="text-3xl font-semibold">Resume</h1>
+        <h1 className="text-3xl font-semibold">Portfolio</h1>
         <div className="bg-yellow-primary w-10 h-1 rounded-2xl"></div>
       </div>
       {/* portfolio card start*/}

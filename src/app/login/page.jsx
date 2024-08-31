@@ -6,8 +6,11 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const [loading, setLoading] = useState(false);
+
   const handleLogin = async () => {
     try {
+      setLoading(true);
       if (!email || !password) {
         return alert("Please fill all fields");
       }
@@ -21,8 +24,10 @@ function Login() {
       }
 
       window.location.href = "/admin/add";
+      setLoading(false);
     } catch (error) {
       console.log(error);
+      setLoading(false);
     }
   };
 
@@ -50,7 +55,7 @@ function Login() {
           className="bg-[#1e1e1f]  w-full md:w-40 h-12 rounded-2xl font-semibold flex justify-center items-center space-x-2 px-2 py- text-sm border-[0.2px] border-[#5a5a5b] shadow-lg text-yellow-primary transition-all ease-in-out duration-300 active:scale-95"
           onClick={handleLogin}
         >
-          <p>Login</p>
+          <p> {loading ? "Loging..." : "Login"}</p>
         </button>
       </div>
     </div>
