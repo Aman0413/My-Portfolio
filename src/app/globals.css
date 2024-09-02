@@ -14,133 +14,13 @@
 body{
     background-color: #121212;
 }
-.article-title { margin-bottom: 30px; }
-
-.timeline { margin-bottom: 30px; }
-
-.timeline .title-wrapper { margin-bottom: 25px; }
-
-.timeline-list { font-size: 0.875rem; margin-left: 45px; }
-
-.timeline-item { position: relative; }
-
-.timeline-item:not(:last-child) { margin-bottom: 20px; }
-
-.timeline-item-title { margin-bottom: 7px; }
-
-.timeline-list span { color: #DAA520; }
-
-.timeline-item:not(:last-child)::before {
-  content: "";
-  position: absolute;
-  top: -25px;
-  left: -30px;
-  width: 1px;
-  height: calc(100% + 50px);
-  background: #343434;
-}
-
-.timeline-item::after {
-  content: "";
-  position: absolute;
-  top: 5px;
-  left: -33px;
-  height: 6px;
-  width: 6px;
-  background: linear-gradient(135deg, #FFFF00 0%, #FF8C00 100%);
-  border-radius: 50%;
-  box-shadow: 0 0 0 4px #343434;
-}
-
-.timeline-text { color: #D3D3D3; }
-
-.skills-title { margin-bottom: 20px; }
-
-.skills-list { padding: 20px; }
-
-.skills-item:not(:last-child) { margin-bottom: 15px; }
-
-.skill .title-wrapper { margin-bottom: 8px; }
-
-.skill .title-wrapper data { color: #D3D3D3; }
-
-.skill-progress-bg { background: #343434; width: 100%; height: 8px; border-radius: 10px; }
-
-.skill-progress-fill { background: linear-gradient(135deg, #FFFF00 0%, #FF8C00 100%); height: 100%; border-radius: inherit; }
 
 
 
-/* skill section */
 
-@media screen and (max-width: 640px) {
-  .skillsGrid{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    grid-auto-rows: auto;
-    height: auto;
-  }
-.skillsGrid img {
-  height: 75px;
-  width: 75px;
-}
-.skills{
-  background-color: whitesmoke;
-  display: flex;
-  flex-direction: column;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-}
-}
 
-@media screen and (min-width: 641px) {
-  .skillsGrid{
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 30px;
-    grid-auto-rows: auto;
-    height: auto;
-  }
-.skillsGrid img {
-  height: 100px;
-  width: 100px;
-}
-.skills{
-  background-color: whitesmoke;
-  display: flex;
-  flex-direction: column;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-}
-}
 
-@media screen and (min-width: 1080px) {
-  .skillsGrid{
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 50px;
-    grid-auto-rows: auto;
-    height: auto
-  }
-.skillsGrid img {
-  height: 150px;
-  width: 150px;
-}
-.skills{
-  background-color: whitesmoke;
-  display: flex;
-  flex-direction: column;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-}
+
+
+
+

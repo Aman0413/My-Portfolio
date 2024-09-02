@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { IoMdBook } from "react-icons/io";
 import { motion } from "framer-motion";
 import Skills from "../../components/Skills";
 

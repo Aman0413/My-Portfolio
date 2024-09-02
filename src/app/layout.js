@@ -29,8 +29,8 @@ export default function RootLayout({ children }) {
 
   useEffect(() => {
     VanillaTilt.init(document.querySelectorAll(".tilt-image"), {
-      max: 35,
-      speed: 300,
+      max: 100,
+      speed: 500,
       glare: false,
     });
   }, []);
@@ -41,18 +41,6 @@ export default function RootLayout({ children }) {
       title: "Email",
       value: "amanv7404@gmail.com",
       icon: <MdMailOutline />,
-    },
-    {
-      id: 2,
-      title: "Phone",
-      value: "+91 7225090867",
-      icon: <IoPhonePortraitOutline />,
-    },
-    {
-      id: 3,
-      title: "Birthday",
-      value: "October 4, 2001",
-      icon: <SlCalender />,
     },
     {
       id: 4,
