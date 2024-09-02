@@ -3,6 +3,7 @@
 import React from "react";
 import { IoMdBook } from "react-icons/io";
 import { motion } from "framer-motion";
+import Skills from "../../components/Skills";
 
 function resume() {
   const skills = [
@@ -132,32 +133,8 @@ function resume() {
       {/* Skill section start */}
       <section className=" mt-14 ">
         <div className=" text-2xl font-semibold my-5 ">My Skills</div>
-        <div className="bg-[#222224] shadow-xl rounded-2xl border-[0.2px] border-[#383839] px-2">
-          {skills.map((item) => {
-            return (
-              <div key={item.id} className="md:w-[50%] pl-6 my-3">
-                <div className="flex space-x-6 py-2 justify-between">
-                  <span className="text-base text-gray-lite font-semibold dark:text-[#A6A6A6]">
-                    {item.name}
-                  </span>
-                  <span className="text-base font-semibold text-gray-lite pr-5 dark:text-[#A6A6A6]">
-                    {item.percentage}
-                  </span>
-                </div>
-                <div className="">
-                  <div className="mt-2 h-2 relative w-full rounded-full overflow-hidden">
-                    <div className=" w-full h-full bg-[#4b4b4b] absolute "></div>
-                    <div
-                      className={`h-full skill-progress-fill absolute w-[${item.percentage}]`}
-                      style={{
-                        width: item.percentage,
-                      }}
-                    ></div>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
+        <div className="bg-[#222224] shadow-xl rounded-2xl border-[0.2px] border-[#383839] p-4">
+          <Skills />
         </div>
       </section>
       {/* Skill section end */}
