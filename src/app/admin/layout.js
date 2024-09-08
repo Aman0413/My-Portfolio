@@ -36,22 +36,13 @@ export default function Layout({ children }) {
               Add Project
             </li>
           </Link>
-          <Link href={"/admin/update"}>
+          <Link href={"/admin/action"}>
             <li
               className={`bg-[#383839] px-4 py-2 rounded-full ${
-                path == "/admin/update" ? "text-yellow-primary" : ""
+                path == "/admin/action" ? "text-yellow-primary" : ""
               }`}
             >
-              Update Project
-            </li>
-          </Link>
-          <Link href={"/admin/delete"}>
-            <li
-              className={`bg-[#383839] px-4 py-2 rounded-full ${
-                path == "/admin/delete" ? "text-yellow-primary" : ""
-              }`}
-            >
-              Delete Project
+              Action Project
             </li>
           </Link>
         </ul>

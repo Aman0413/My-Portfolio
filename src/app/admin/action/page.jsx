@@ -1,14 +1,12 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import { AiFillDelete } from "react-icons/ai";
+
 import axios from "axios";
-import toast from "react-hot-toast";
-import { FaAws } from "react-icons/fa";
+import { useRouter } from "next/navigation";
+import React, { useEffect, useState } from "react";
 
 function Page() {
+  const router = useRouter();
   const [projects, setProjects] = useState([]);
-  const [disebleButton, setDisebleButton] = useState(false);
-  const [loading, setLoading] = useState(false);
 
   const getAllProjects = async () => {
     try {
@@ -46,18 +44,22 @@ function Page() {
     getAllProjects();
   }, []);
 
-  useEffect(() => {
-    getAllProjects();
-  }, [handleDelete]);
+  // useEffect(() => {
+  //   getAllProjects();
+  // }, [handleDelete]);
 
   return (
-    <div className="p-4 mt-5">
-      <div className="shadow-lg rounded-lg overflow-hidden mx-4 md:mx-10">
+    <div className="mt-6">
+      <h2 className="font-bold">Actions</h2>
+      <div className="mt-3 py-5">
         <table className="w-full table-fixed">
           <thead>
             <tr className="bg-[#383839] ">
               <th className="w-full py-4 px-6 text-left text-white font-bold uppercase ">
                 Project Name
+              </th>
+              <th className="w-1/4 py-4 px-6 text-left text-white font-bold uppercase">
+                Update
               </th>
               <th className="w-1/4 py-4 px-6 text-left text-white font-bold uppercase">
                 Delete
@@ -74,9 +76,18 @@ function Page() {
                     </td>
                     <td className="py-4 px-6 border-b border-gray-200 cursor-pointer">
                       <span
+                        className="bg-green-500 text-white py-1 px-2 rounded-full text-xs"
+                        onClick={() => {
+                          router.push(`/admin/update/${item._id}`);
+                        }}
+                      >
+                        Update
+                      </span>
+                    </td>
+                    <td className="py-4 px-6 border-b border-gray-200 cursor-pointer">
+                      <span
                         className="bg-red-500 text-white py-1 px-2 rounded-full text-xs"
                         onClick={() => handleDelete(item._id)}
-                        diseable={disebleButton}
                       >
                         Delete
                       </span>
