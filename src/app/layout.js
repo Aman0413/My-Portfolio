@@ -4,8 +4,8 @@ import "./globals.css";
 import Image from "next/image";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { MdMailOutline } from "react-icons/md";
-import { IoPhonePortraitOutline, IoLocationOutline } from "react-icons/io5";
-import { SlCalender } from "react-icons/sl";
+import { IoLocationOutline } from "react-icons/io5";
+
 import { FaGithubSquare, FaLinkedin, FaInstagramSquare } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
@@ -78,15 +78,17 @@ export default function RootLayout({ children }) {
               </div>
               <div className="flex flex-col justify-center items-center space-x-4  md:p-10 p-5 profile ">
                 <div className="flex md:flex-col space-x-5 justify-center items-center">
-                  <div className="bg-[#383839] rounded-3xl   flex justify-center items-center w-30 h-30 p-6 tilt-image">
-                    <Image
-                      src="https://res.cloudinary.com/dd3yp2kob/image/upload/v1715588291/portfolio_project_image/IMG_20240513_134650_rmt22k.jpg"
-                      alt="Aman Verma"
-                      width={80}
-                      height={80}
-                      className="rounded-full"
-                    />
-                  </div>
+                  <Link href="/">
+                    <div className="bg-[#383839] rounded-3xl   flex justify-center items-center w-30 h-30 p-6 tilt-image">
+                      <Image
+                        src="https://res.cloudinary.com/dd3yp2kob/image/upload/v1715588291/portfolio_project_image/IMG_20240513_134650_rmt22k.jpg"
+                        alt="Aman Verma"
+                        width={80}
+                        height={80}
+                        className="rounded-full"
+                      />
+                    </div>
+                  </Link>
                   <div className="md:mt-8 ">
                     <div className="flex flex-col space-y-2 justify-center items-center">
                       <h1 className="md:text-2xl font-medium text-base">

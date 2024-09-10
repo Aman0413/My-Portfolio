@@ -9,16 +9,11 @@ function page({ params }) {
   const [data, setData] = useState({
     title: "",
     category: "",
-    desc: "",
-    image: "",
-    github: "",
-    live: "",
   });
 
   const getProject = async (id) => {
     try {
       const res = await axios.post(`/api/admin/project/${id}`);
-      console.log(res.data.data);
     } catch (error) {
       console.log(error);
     }

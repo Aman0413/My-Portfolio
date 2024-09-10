@@ -13,7 +13,6 @@ cloudinary.v2.config({
 export async function POST(request) {
   try {
     await connectDB();
-
     // Get data from request
     const { title, category, desc, image, live, github } = await request.json();
 
@@ -80,8 +79,8 @@ export async function POST(request) {
 // api route to get all projects /admin/project
 export async function GET(request) {
   try {
-    await connectDB();
     // Get all projects
+    await connectDB();
     const projects = await Project.find().sort({ createdAt: -1 });
 
     return NextResponse.json(
