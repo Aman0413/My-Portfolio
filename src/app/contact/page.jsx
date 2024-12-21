@@ -3,10 +3,11 @@
 import React, { useState } from "react";
 import { IoIosSend } from "react-icons/io";
 import { motion } from "framer-motion";
-import toast from "react-hot-toast";
-import { sendEmailForQuery } from "../helper/sendEmail";
+import toast, { LoaderIcon } from "react-hot-toast";
+import axios from "axios";
 
 function Contact() {
+  const [loader, setLoader] = useState(false);
   const [data, setData] = useState({
     name: "",
     email: "",
@@ -21,17 +22,32 @@ function Contact() {
     }
 
     try {
-      await sendEmailForQuery(data);
-      console.log(res);
-      toast.success("Message sent successfully!");
-      setData({
-        name: "",
-        email: "",
-        message: "",
+      setLoader(true);
+      const res = await axios.post("/api/email", {
+        name: data.name,
+        email: data.email,
+        message: data.message,
       });
+      setLoader(false);
+      if (res.data.success) {
+        toast.success("Message sent successfully!");
+        setData({
+          name: "",
+          email: "",
+          message: "",
+        });
+      } else if (!res.data.success) {
+        toast.error("Something went wrong! Please try again later.");
+        setData({
+          name: "",
+          email: "",
+          message: "",
+        });
+      }
     } catch (error) {
+      setLoader(false);
       console.log(error);
-      toast.error(res.message);
+      toast.error("Something went wrong! Please try again later.");
       setData({
         name: "",
         email: "",
@@ -81,9 +97,12 @@ function Contact() {
           />
         </div>
         <div className=" flex justify-end">
-          <button className="bg-[#1e1e1f]  w-full md:w-40 h-12 rounded-2xl font-semibold flex justify-center items-center space-x-2 px-2 py- text-sm border-[0.2px] border-[#5a5a5b] shadow-lg text-yellow-primary transition-all ease-in-out duration-300 active:scale-95">
+          <button
+            className="bg-[#1e1e1f]  w-full md:w-40 h-12 rounded-2xl font-semibold flex justify-center items-center space-x-2 px-2 py- text-sm border-[0.2px] border-[#5a5a5b] shadow-lg text-yellow-primary transition-all ease-in-out duration-300 active:scale-95"
+            disabled={loader}
+          >
             <span>
-              <IoIosSend className="text-xl" />
+              {loader ? <LoaderIcon /> : <IoIosSend className="text-xl" />}
             </span>
             <p>Send Message</p>
           </button>
