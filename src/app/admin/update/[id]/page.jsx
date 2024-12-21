@@ -3,7 +3,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
-function page({ params }) {
+function Page({ params }) {
   const { id } = params;
 
   const [data, setData] = useState({
@@ -170,4 +170,4 @@ function page({ params }) {
   );
 }
 
-export default page;
+export default Page;
