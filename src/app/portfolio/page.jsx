@@ -1,49 +1,37 @@
-"use client";
-
-import React, { useEffect, useState } from "react";
 import { IoEye } from "react-icons/io5";
 import { FaGithub } from "react-icons/fa";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import axios from "axios";
-import Loader from "../../components/Loader";
 import Image from "next/image";
 
-function Portfolio() {
-  const [portfolioData, setPortfolioData] = useState([]);
-  const [loading, setLoading] = useState(false);
+async function Portfolio() {
+  let portfolioData = [];
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/admin/project`,
+      {
+        cache: "no-store",
+      }
+    );
 
-  const getAllProjects = async () => {
-    try {
-      setLoading(true);
-      const res = await axios.get("/api/admin/project");
-      setPortfolioData(res.data.data);
-      setLoading(false);
-    } catch (error) {
-      setLoading(false);
-      console.log(error);
+    if (res.ok) {
+      const data = await res.json();
+      portfolioData = data.data || [];
+    } else {
+      console.error("Error fetching portfolio data:", res.statusText);
     }
-  };
+  } catch (error) {
+    console.error("API fetch error:", error.message);
+  }
 
-  useEffect(() => {
-    getAllProjects();
-  }, []);
-
-  return loading ? (
-    <Loader />
-  ) : (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.5 }}
-      className="portfolio py-6"
-    >
+  return (
+    <>
       <div className="flex flex-col space-y-3">
         <h1 className="text-3xl font-semibold">Portfolio</h1>
         <div className="bg-yellow-primary w-10 h-1 rounded-2xl"></div>
       </div>
-      {/* portfolio card start*/}
+
+      {/* Portfolio Cards */}
       <div className="w-full portfolioCard my-10 grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-10">
         {portfolioData.map((item) => (
           <div key={item._id} className="portfolioCard">
@@ -53,7 +41,7 @@ function Portfolio() {
                   <Image
                     className="h-full w-full object-cover transition-transform duration-500 group-hover:rotate-3 group-hover:scale-125"
                     src={item.image?.url}
-                    alt=""
+                    alt={item.title || "Portfolio Image"}
                     height={240}
                     width={240}
                   />
@@ -67,12 +55,12 @@ function Portfolio() {
                     {item?.description}
                   </p>
                   <div className="flex space-x-2">
-                    <Link href={item?.live}>
+                    <Link href={item?.live || "#"}>
                       <button className="rounded-full bg-[#282828] p-2 md:py-3 md:px-4 font-com text-lg capitalize shadow shadow-black/60 text-yellow-primary">
                         <IoEye />
                       </button>
                     </Link>
-                    <Link href={item?.github}>
+                    <Link href={item?.github || "#"}>
                       <button className="rounded-full bg-[#282828] p-2 md:py-3 md:px-4 font-com text-lg capitalize shadow shadow-black/60 text-yellow-primary">
                         <FaGithub />
                       </button>
@@ -83,13 +71,11 @@ function Portfolio() {
             </div>
             <div className="mt-3 ml-2 text-sm flex flex-col">
               <p>{item?.title}</p>
-              {/* <p className="text-[#8d8d8e]">{item.category}</p> */}
             </div>
           </div>
         ))}
       </div>
-      {/* portfolio card end*/}
-    </motion.div>
+    </>
   );
 }
 
