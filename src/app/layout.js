@@ -19,10 +19,10 @@ import { usePathname } from "next/navigation";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata = {
-  title: "Aman Verma",
-  description: "Aman Verma Portfolio",
-};
+// export const metadata = {
+//   title: "Aman Verma",
+//   description: "Aman Verma Portfolio",
+// };
 
 export default function RootLayout({ children }) {
   const path = usePathname();
